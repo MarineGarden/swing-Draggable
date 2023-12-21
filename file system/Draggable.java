@@ -1,4 +1,4 @@
-package gadget;
+package gadget.draggable;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -16,47 +16,6 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Draggable extends Point implements MouseMotionListener {
-	
-	public enum MouseButton {
-		
-		LEFT, MIDDLE, RIGHT;
-		
-		static HashSet<MouseButton> restraints = new HashSet<MouseButton>();
-		static void when( MouseButton trigger ) {
-			
-			restraints.add( trigger );
-			
-		}
-		static void on() {
-			
-			restraints.clear();
-			
-		}
-		static boolean hasRestraints() {
-			
-			return restraints.size() > 0;
-			
-		}
-		
-		boolean filter( MouseEvent event ) {
-			
-			switch ( event.getModifiersEx() ) {
-			
-				case MouseEvent.BUTTON1_DOWN_MASK:
-					return name().equals( "LEFT" );
-					
-				case MouseEvent.BUTTON2_DOWN_MASK:
-					return name().equals( "MIDDLE" );
-					
-				case MouseEvent.BUTTON3_DOWN_MASK:
-					return name().equals( "RIGHT" );
-			
-			}
-			return false;
-			
-		}
-		
-	}
 	
 	private HashSet<MouseButton> restraints = new HashSet<MouseButton>();
 	
